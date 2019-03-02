@@ -51,5 +51,6 @@ public class Swagger2 {
                 .version("1.0.0")
 //                建立
                 .build();
+
     }
 }
