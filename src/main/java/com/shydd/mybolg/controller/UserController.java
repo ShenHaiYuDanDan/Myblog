@@ -11,7 +11,7 @@ public class UserController {
 
     // 创建线程安全的Map
     static Map<Long, User> users = Collections.synchronizedMap(new HashMap<Long, User>());
-
+//可以使用GETMapping
     @RequestMapping(value="/", method=RequestMethod.GET)
     public List<User> getUserList() {
         // 处理"/users/"的GET请求，用来获取用户列表
@@ -19,7 +19,7 @@ public class UserController {
         List<User> r = new ArrayList<User>(users.values());
         return r;
     }
-
+//可以使用POSTMapping
     @RequestMapping(value="/", method=RequestMethod.POST)
     public String postUser(@ModelAttribute User user) {
         // 处理"/users/"的POST请求，用来创建User
@@ -27,7 +27,7 @@ public class UserController {
         users.put(user.getId(), user);
         return "success";
     }
-
+//可以使用@GetMapping
     @RequestMapping(value="/{id}", method=RequestMethod.GET)
     public User getUser(@PathVariable Long id) {
         // 处理"/users/{id}"的GET请求，用来获取url中id值的User信息
@@ -35,7 +35,8 @@ public class UserController {
         return users.get(id);
     }
 
-    @RequestMapping(value="/{id}", method=RequestMethod.PUT)
+
+    @PutMapping(value="/{id}")
     public String putUser(@PathVariable Long id, @ModelAttribute User user) {
         // 处理"/users/{id}"的PUT请求，用来更新User信息
         User u = users.get(id);
@@ -44,7 +45,7 @@ public class UserController {
         users.put(id, u);
         return "success";
     }
-
+    // 可以使用DeleteMapping 而不需要加后缀   @RequestMapping(value="/{id}",method=RequestMethod.DELETE)
     @RequestMapping(value="/{id}", method=RequestMethod.DELETE)
     public String deleteUser(@PathVariable Long id) {
         // 处理"/users/{id}"的DELETE请求，用来删除User
