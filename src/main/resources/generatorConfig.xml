@@ -20,7 +20,7 @@
               <!--需要设置以下内容 不然无法生成主键方法-->
              <!--设置可以获取tables remarks信息-->
             <property name="useInformationSchema" value="true"/>
-            <!--生成时需要删除20.21.23.24这4行注释 不然无法生成 而且还没报错-->
+            <!--生成时需要删除20.21.23.24这4行注释 不然无法生成 而且还报错-->
                <!--设置可以获取remarks信息-->
             <property name="remarks" value="true"/>
         </jdbcConnection>
